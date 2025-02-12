@@ -217,7 +217,11 @@ textarea {
   font-size: 12px;
   animation: checkmark-appear 0.3s ease-out;
 }
-
+.choice-item input[type="checkbox"]:checked + label::after {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
 @keyframes checkmark-appear {
   from {
       transform: scale(0);
