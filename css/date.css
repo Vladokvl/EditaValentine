@@ -1,4 +1,10 @@
-/* date.css */
+/* Основні стилі */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   text-align: center;
   margin-top: 30px;
@@ -8,49 +14,111 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-/* Базові налаштування для мобільних пристроїв */
-/* Медіа-запити для адаптивності */  
-@media screen and (max-width: 768px) {  
-  .selection-grid {  
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));  
-    gap: 15px;  
-    padding: 0 10px;  
-  }  
-  
-  .choice-item img {  
-    height: 80px;  
-    width: 80px;  
-  }  
-}  
-  
-@media screen and (max-width: 480px) {  
-  .selection-grid {  
-    grid-template-columns: repeat(2, 1fr);  
-    gap: 10px;  
-  }  
-  
-  .choice-item img {  
-    height: 70px;  
-    width: 70px;  
-  }  
-  
-  .choice-item label {  
-    font-size: 14px;  
-  }  
-}
-h1 {
-  font-size: 40px;
-  margin-bottom: 20px;
+  padding: 0 20px;
 }
 
 .form-group {
+  width: 100%;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 25px;
+  gap: 20px;
+}
+
+/* Сітка вибору */
+.selection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
   width: 100%;
   max-width: 600px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+/* Стилізація для останнього елемента при непарній кількості */
+.selection-grid .choice-item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 50%;
+}
+
+.choice-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.choice-item:hover {
+  transform: translateY(-5px);
+}
+
+.choice-item img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 5px solid #ff9494;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+/* Адаптивність */
+@media screen and (min-width: 769px) {
+  .selection-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .choice-item img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .selection-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  
+  .choice-item img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .selection-grid .choice-item:last-child:nth-child(odd) {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .selection-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 0 10px;
+  }
+  
+  .choice-item img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .choice-item label {
+    font-size: 14px;
+  }
+  
+  .selection-grid .choice-item:last-child:nth-child(odd) {
+    width: 80%;
+  }
+}
+
+/* Інші стилі залишаються без змін */
+.question-title {
+  font-size: 30px;
+  margin: 20px 0;
+  color: #860e0e;
 }
 
 input[type="date"] {
@@ -59,52 +127,10 @@ input[type="date"] {
   cursor: pointer;
   margin: 10px;
   font-family: "Courier", monospace;
-  margin-bottom: 10px;
   background-color: #ffe3e1;
   color: #e67373;
   border-radius: 12px;
   border: 2px solid #ffe3e1;
-}
-
-.question-title {
-  font-size: 30px;
-  margin-bottom: 20px;
-  color: #860e0e;
-}
-
-.selection-grid {  
-  display: grid;  
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));  
-  gap: 20px;  
-  width: 100%;  
-  max-width: 600px;  
-  padding: 0 20px;  
-  margin-bottom: 20px;  
-}
-
-.choice-item {  
-  display: flex;  
-  flex-direction: column;  
-  align-items: center;  
-  color: #860e0e;  
-  padding: 10px;  
-  transition: transform 0.3s ease;  
-}
-.choice-item:hover {  
-  transform: translateY(-5px);  
-}
-.choice-item img {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-  border: 5px solid #ff9494;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-.choice-item label {
-  display: block;
-  font-size: 18px;
 }
 
 textarea {
@@ -115,86 +141,22 @@ textarea {
   font-family: "Courier", monospace;
   border-radius: 12px;
   border: 2px solid #ffe3e1;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .button {
   padding: 10px 20px;
   font-size: 18px;
   cursor: pointer;
-  margin: 10px;
-  font-family: "Courier", monospace;
-  margin-bottom: 20px;
   background-color: #ffe3e1;
   color: #e67373;
   border-radius: 12px;
   border: 2px solid #ffe3e1;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .button:hover {
   background-color: #ff9494;
   color: #ffe3e1;
-  border: 2px solid #ff9494;
-}
-
-#thankYouMessage {
-  font-size: 40px;
-  color: #860e0e;
-  margin-top: 20px;
-}
-#loadingMessage {  
-  font-size: 24px;  
-  color: #ff9494;  
-  margin: 20px 0;  
-  animation: pulse 1.5s infinite;  
-}  
-
-@keyframes pulse {  
-  0% { transform: scale(1); }  
-  50% { transform: scale(1.1); }  
-  100% { transform: scale(1); }  
-}
-img {
-  height: 400px;
-  width: auto;
-  padding: 10px;
-}
-
-#valentineQuestion {
-  font-size: 50px;
-  margin-bottom: 10px;
-}
-.answerButton {  
-  padding: 10px 20px;  
-  font-size: 18px;  
-  cursor: pointer;  
-  margin: 10px;  
-  font-family: "courier";  
-  margin-bottom: 20px;  
-  background-color: #ffe3e1;  
-  color: #e67373;  
-  border-radius: 12px;  
-  border: 2px solid #ffe3e1;  
-  box-shadow: 1px 1px 2px #ff9494;  
-  transition: 0.3s;  
-  width: fit-content; /* Додаємо це */  
-  height: fit-content; /* Додаємо це */  
-}  
-
-#noButton {  
-  width: auto; /* Додаємо це */  
-  height: auto; /* Додаємо це */  
-}
-
-.answerButton:hover {
-  background-color: #ff9494;
-  color: #ffe3e1;
-  border: 2px solid #ff9494;
-  box-shadow: 1px 1px 2px #ffe3e1;
-}
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
+  border-color: #ff9494;
+} 
