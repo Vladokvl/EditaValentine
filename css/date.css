@@ -1,0 +1,229 @@
+/* date.css */
+body {
+  text-align: center;
+  margin-top: 30px;
+  font-family: "Delius Swash Caps", cursive;
+  background-color: #fff5e4;
+  color: #860e0e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Базові налаштування для мобільних пристроїв */
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  body {
+    padding: 10px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .form-group {
+    width: 95%;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 28px;
+    padding: 0 15px;
+  }
+
+  .question-title {
+    font-size: 24px;
+    margin: 15px 0;
+  }
+
+  .selection-grid {
+    gap: 10px;
+    padding: 0 10px;
+  }
+
+  .choice-item {
+    width: calc(50% - 10px);
+  }
+
+  .choice-item img {
+    height: 120px;
+    width: 120px;
+  }
+
+  .choice-item label {
+    font-size: 16px;
+  }
+
+  textarea {
+    width: 90%;
+    height: 80px;
+  }
+
+  input[type="date"] {
+    width: 90%;
+    max-width: 280px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .choice-item {
+    width: 100%;
+  }
+
+  .choice-item img {
+    height: 100px;
+    width: 100px;
+  }
+}
+h1 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 25px;
+  width: 100%;
+  max-width: 600px;
+}
+
+input[type="date"] {
+  padding: 6px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 10px;
+  font-family: "Courier", monospace;
+  margin-bottom: 10px;
+  background-color: #ffe3e1;
+  color: #e67373;
+  border-radius: 12px;
+  border: 2px solid #ffe3e1;
+}
+
+.question-title {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #860e0e;
+}
+
+.selection-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.choice-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #860e0e;
+}
+
+.choice-item img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 5px solid #ff9494;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.choice-item label {
+  display: block;
+  font-size: 18px;
+}
+
+textarea {
+  width: 80%;
+  height: 100px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: "Courier", monospace;
+  border-radius: 12px;
+  border: 2px solid #ffe3e1;
+  margin-bottom: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 10px;
+  font-family: "Courier", monospace;
+  margin-bottom: 20px;
+  background-color: #ffe3e1;
+  color: #e67373;
+  border-radius: 12px;
+  border: 2px solid #ffe3e1;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: #ff9494;
+  color: #ffe3e1;
+  border: 2px solid #ff9494;
+}
+
+#thankYouMessage {
+  font-size: 40px;
+  color: #860e0e;
+  margin-top: 20px;
+}
+#loadingMessage {  
+  font-size: 24px;  
+  color: #ff9494;  
+  margin: 20px 0;  
+  animation: pulse 1.5s infinite;  
+}  
+
+@keyframes pulse {  
+  0% { transform: scale(1); }  
+  50% { transform: scale(1.1); }  
+  100% { transform: scale(1); }  
+}
+img {
+  height: 400px;
+  width: auto;
+  padding: 10px;
+}
+
+#valentineQuestion {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.answerButton {  
+  padding: 10px 20px;  
+  font-size: 18px;  
+  cursor: pointer;  
+  margin: 10px;  
+  font-family: "courier";  
+  margin-bottom: 20px;  
+  background-color: #ffe3e1;  
+  color: #e67373;  
+  border-radius: 12px;  
+  border: 2px solid #ffe3e1;  
+  box-shadow: 1px 1px 2px #ff9494;  
+  transition: 0.3s;  
+  width: fit-content; /* Додаємо це */  
+  height: fit-content; /* Додаємо це */  
+}  
+
+#noButton {  
+  width: auto; /* Додаємо це */  
+  height: auto; /* Додаємо це */  
+}
+
+.answerButton:hover {
+  background-color: #ff9494;
+  color: #ffe3e1;
+  border: 2px solid #ff9494;
+  box-shadow: 1px 1px 2px #ffe3e1;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}

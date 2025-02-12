@@ -1,0 +1,119 @@
+<!-- form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Date</title>
+    <link rel="stylesheet" href="css/date.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 title="choose a date">Are you free on ...</h1>
+    
+    <form id="dateForm" class="form-group">
+        <label>Which day: (select a date)</label>
+        <div>
+            <input type="date" name="date" required />
+        </div>
+
+        <div class="question-title">
+            <b>What food would you like to eat?</b>
+        </div>
+        <div class="selection-grid">
+            <div class="choice-item">
+                <img src="food/pizza.jpg" alt="pizza" />
+                <label><input type="checkbox" name="food" value="pizza" /> Pizza</label>
+            </div>
+            <div class="choice-item">
+                <img src="food/hachapuri.jpg" alt="hachapuri" />
+                <label><input type="checkbox" name="food" value="hachapuri" /> Hachapuri</label>
+            </div>
+            <div class="choice-item">
+                <img src="food/sushi.jpg" alt="sushi" />
+                <label><input type="checkbox" name="food" value="sushi" /> Sushi</label>
+            </div>
+            <div class="choice-item">
+                <img src="food/kfc.jpg" alt="kfc" />
+                <label><input type="checkbox" name="food" value="KFC" /> KFC</label>
+            </div>
+            <div class="choice-item">
+                <img src="food/pelmeni.jpg" alt="pelmeni" />
+                <label><input type="checkbox" name="food" value="dumplings" /> Dumplings</label>
+            </div>
+            <!-- Add other food items with the same structure -->
+        </div>
+
+        <div class="question-title"><b>What are we doing?</b></div>
+        <div class="selection-grid">
+            <div class="choice-item">
+                <img src="activities/ski.jpg" alt="ski" />
+                <label><input type="checkbox" name="activities" value="ski" /> Ski</label>
+            </div>
+            <div class="choice-item">
+                <img src="activities/cinema.jpeg" alt="cinema" />
+                <label><input type="checkbox" name="activities" value="cinema" /> Cinema</label>
+            </div>
+            <div class="choice-item">
+                <img src="activities/racingclub.jpg" alt="racingclub" />
+                <label><input type="checkbox" name="activities" value="racingclub" /> Racingclub</label>
+            </div>
+            <div class="choice-item">
+                <img src="activities/Park.jpg" alt="park" />
+                <label><input type="checkbox" name="activities" value="park" /> park</label>
+            </div>
+            <!-- Add other activity items with the same structure -->
+        </div>
+
+        <label>Leave a message (optional):</label>
+        <textarea name="message" placeholder="Your message..."></textarea>
+
+        <button class="button" type="submit">Send</button>
+    </form>
+
+    <h1 id="thankYouMessage" style="display: none;">See you soon!</h1>
+    <div id="loadingMessage" style="display: none;">  
+        Sending your choices... ❤️  
+    </div>
+    <!-- Keep the same script section -->
+    <script>
+       document.getElementById('dateForm').addEventListener('submit', function(event) {  
+    event.preventDefault();  
+      
+    const formData = new FormData(this);  
+    const form = document.getElementById('dateForm');  
+      
+    // Показуємо індикатор завантаження якщо він є  
+    if (document.getElementById('loadingMessage')) {  
+        document.getElementById('loadingMessage').style.display = 'block';  
+    }  
+    form.style.opacity = '0.5';  
+  
+    fetch('https://formspree.io/f/mvgzryoa', {  
+        method: 'POST',  
+        body: formData,  
+        headers: {  
+            'Accept': 'application/json'  
+        }  
+    })  
+    .then(response => {  
+        if (!response.ok) {  
+            throw new Error('Network response was not ok');  
+        }  
+        // Перенаправляємо на сторінку успіху  
+        window.location.href = 'success.html';  
+    })  
+    .catch(error => {  
+        console.error('Error:', error);  
+        form.style.opacity = '1';  
+        if (document.getElementById('loadingMessage')) {  
+            document.getElementById('loadingMessage').style.display = 'none';  
+        }  
+        alert('Something went wrong! Please try again.');  
+    });  
+});
+    </script>
+</body>
+</html>
